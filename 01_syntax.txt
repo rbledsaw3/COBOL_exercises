@@ -1,0 +1,69 @@
+|<───────────── Column Numbers ───────────────>|
+|1|2|3|4|5|6|7|8|9|10|11|12|13|...|72|73|...|80|
+| Sequence  |^| A Area  |   B Area   | ID Area |
+|Number Area|||<───────>|<──────────>|<───────>|
+|<─────────>|||
+             ╰─── Indicator Area
+
+Sequence Number Area: starts with 000100 and increments by 000100 
+    (000100, 000200, etc.). Can be blank.
+
+Indicator Area: Indicates if the line is a comment, a continuation of a
+    previous line, for debugging, or source code listing formatting.
+    * = comment
+    - = continuation
+    d = debug
+    / = source code listing formatting
+
+A Area: DIVISIONS, SECTIONS, PARAGRAPHS, LEVEL INDICATORS, and other elements
+    that provide structure.
+
+B Area: Where STATEMENTS, SENTENCES, and CLAUSES go to perform logic.
+
+Identification Area (ID Area): Area a programmer can use for any purpose. Is
+    ignored by the compiler.
+
+Reserved Words: Words like READY, DATA, END, SET, FILE, IF, UNTIL, etc. are
+    reserved by the compiler as they have syntactical meaning.
+    
+Structure: COBOL structure is as follows: DIVISIONS ─> SECTIONS ─> PARAGRAPHS ─┐
+    ┌──────────────────────────────────────────────────────────────────────────┘
+    └─>SENTENCES ─> STATEMENTS
+
+STATEMENTS: a single directive usually starting with a reserved word. STATEMENTS
+    go into a SENTENCE.
+    Example: ADD 2 TO TOTAL.
+    Example: IF ITEM = "B"
+                 ADD 2 TO TOTAL
+             END-IF
+
+PARAGRAPHS: Are user defined actions made up of smaller steps of SENTENCES. can
+    be called like a function in multiple places in the code (e.g. applying
+    interest, or reading user input).
+
+SECTIONS: contains multiple PARAGRAPHS. Can have user-defined or pre-defined
+    names.
+
+DIVISIONS: Four COBOL DIVISIONS are:
+    - IDENTIFICATION: where name, author, and documentation for the program goes
+    - ENVIRONMENT: two SECTIONS: One sets environment to run the program, the
+        other links the program to the files and data used
+    - DATA: sets up all the data to be used 
+    - PROCEDURE: instructions on how to take data in, display output, etc.
+
+Variables: Names of variables are called "data names" can must be at most 30
+    characters, cannot have whitespace, and cannot be a reserved word.
+    Types: Numeric, Alphabetic, Alphanumeric
+    PIC CLAUSE: The PICture CLAUSE, sets the length and datatype of programmer 
+        selected variable (e.g. PIC 9 would be a numeric value of length 1)
+        Example: PIC 9(4) - a numeric variable of 4 digits
+        Example: PIC A - single alphabetic letter
+        Example: PIC X(8) - 8 alphanumeric characters
+        Example: PIC 9(4)V99 - 4 numeric digits, V=decimal place, 2 more digits
+                (e.g. 1435.82)
+        Example: PIC $9,999V99 - Can represent $1,203.48 
+        Numeric maximum length is 18.
+        Alphabetic maximum lenght is 255.
+
+Literals: Used to set something once to be used the in rest of the program.
+
