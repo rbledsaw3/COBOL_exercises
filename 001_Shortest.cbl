@@ -1,4 +1,4 @@
-             $ SET SOURCEFORMAT"FREE"
+      $SET SOURCEFORMAT"FREE"
        IDENTIFICATION DIVISION.
        PROGRAM-ID. ShortestProgram.
        
